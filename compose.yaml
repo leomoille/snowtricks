@@ -9,11 +9,11 @@ services:
       MARIADB_PASSWORD: ${MARIADB_PASSWORD:-!ChangeMe!}
       MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:-root}
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: ["CMD-SHELL", "mariadb --user=root --password=root -e 'SELECT 1;' > /dev/null 2>&1"]
       interval: 10s
       timeout: 5s
       retries: 5
-      start_period: 30s
+      start_period: 10s
     volumes:
       - database_data:/var/lib/mysql
       # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
