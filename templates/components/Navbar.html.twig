@@ -1,0 +1,43 @@
+<div {{ attributes }} class="navbar bg-base-100 shadow-sm">
+    <div class="navbar-start">
+        <div class="dropdown">
+            <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+                {{ ux_icon('ri:menu-2-line', {
+                    class: 'h-5 w-5'
+                }) }}
+            </div>
+            <ul
+                tabindex="-1"
+                class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                <li><a href="{{ path('app_index') }}">Accueil</a></li>
+                <li><a>Les tricks</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="navbar-center">
+        <a href="{{ path('app_index') }}" class="btn btn-ghost text-xl">Snwotricks ❄️</a>
+    </div>
+    <div class="navbar-end space-x-2">
+        <button class="btn btn-ghost btn-circle">
+            {{ ux_icon('ri:search-line', {
+                class: 'h-5 w-5'
+            }) }}
+        </button>
+        {% if app.user %}
+            <button class="btn btn-ghost btn-circle">
+                <div class="indicator">
+                    {{ ux_icon('ri:notification-3-line', {
+                        class: 'h-5 w-5'
+                    }) }}
+                    {# <span class="badge badge-xs badge-primary indicator-item"></span> #}
+                </div>
+            </button>
+        {% else %}
+            <a href="#">
+                {{ ux_icon('ri:user-line', {
+                    class: 'h-5 w-5'
+                }) }}
+            </a>
+        {% endif %}
+    </div>
+</div>
